@@ -12,9 +12,16 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;   /* centra vertical */
+  align-items: center;       /* centra horizontal */
+  flex-direction: column;
+  text-align: center;
+}
 .App-header {
-  background-color: #282c34;
+  background-color: #677897;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -25,7 +32,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #5ebcd6;
 }
 
 @keyframes App-logo-spin {
@@ -35,4 +42,96 @@
   to {
     transform: rotate(360deg);
   }
+}
+.btn {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  padding: 15px;
+  margin: 8px auto;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  background-color: rgb(85, 126, 156);
+}
+.btn { /* estilo base de todos los botones de opción */ }
+.btn-correcta { background-color: green; }
+.btn-incorrecta { background-color: red; }
+
+select {
+  color: black;
+  width: 400px;
+  padding: 25px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: rgb(113, 167, 206);
+  display: block;
+  margin: 20px auto;
+}
+
+.btn-jugar {
+  color : rgb(0, 0, 0);
+  padding: 10px;
+  border-radius: 8px;
+  border: none 25px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  background-color: #2e649d;
+  display: block;
+  width: 200%;
+  max-width: 400px;
+  margin: 20px auto 0 auto;
+  font-size: 1.5cm;
+}
+.config-selects {
+  background-color: #7989c4;
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 20px;
+}
+.btn-siguiente {
+  color : rgb(0, 0, 0);
+  padding: 8px;
+  border-radius: 8px;
+  border: none 25px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  background-color: #3865ec ;
+  display: block;
+  width: 150%;
+  max-width: 400px;
+  margin: 20px auto 0 auto;
+  font-size: 0.5cm;
+}
+.btn-reiniciar {
+  color : rgb(0, 0, 0);
+  padding: 20px 10px;
+  border-radius: 10px;
+  border: none 25px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  background-color: #3865ec ;
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  margin: 10px auto;
+  font-size: 0.5cm;
+}
+.btn-salir {
+  color : rgb(0, 0, 0);
+  padding: 20px 10px;
+  border-radius: 10px;
+  border: none 25px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  background-color: #3865ec ;
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  margin: 10px auto;
+  font-size: 0.5cm;
 }

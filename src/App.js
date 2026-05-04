@@ -1,24 +1,81 @@
-// Importamos hooks de React
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { fetchPreguntas } from "./services/triviaApi";
+import ConfigScreen from "./components/ConfigScreen";
+import GameScreen from "./components/GameScreen";
+import ResultScreen from "./components/ResultScreen";
+import "./App.css";
 
 function App() {
-  const [pregunta, setPregunta] = useState(""); // estado donde guardamos la pregunta
-  useEffect(() => { // esto se ejecuta UNA vez cuando carga la app
-    fetch("https://opentdb.com/api.php?amount=1&type=multiple") // pedimos 1 pregunta a la API
-      .then(res => res.json()) // convertimos la respuesta a JSON para que JavaScript la entienda
-      .then(data => {
-        if (!data.results || data.results.length === 0) return; // si no hay preguntas, salimos
-        const p = data.results[0]; // guardamos la pregunta que viene de la API
-        setPregunta(p.question); // guardamos el dato dentro de la app para poder mostrarlo en pantalla
-      });
-  }, []); // [] hace que se ejecute solo al inicio
+  const [pantalla, setPantalla]       = useState("inicio");
+  const [categoria, setCategoria]     = useState("9");
+  const [dificultad, setDificultad]   = useState("easy");
+  const [preguntas, setPreguntas]     = useState([]);
+  const [indice, setIndice]           = useState(0);
+  const [puntaje, setPuntaje]         = useState(0);
+  const [seleccionada, setSeleccionada] = useState(null);
 
-  return ( // lo que se muestra en pantalla
-    <div> {/* agrupamos todo dentro de un div */}
-      <h1>Trivia</h1> {/* título */}
-      <p dangerouslySetInnerHTML={{ __html: pregunta }}></p> {/* mostramos la pregunta dangerouslySetInnerHTML sirve para mostrar texto con formato HTML */}
+  const handleJugar = async () => {
+    const data = await fetchPreguntas(categoria, dificultad);
+    setPreguntas(data);
+    setIndice(0);
+    setPuntaje(0);
+    setSeleccionada(null);
+    setPantalla("quiz");
+  };
+
+  const handleSeleccionar = (opcion) => {
+    if (seleccionada) return; // ya respondió
+    setSeleccionada(opcion);
+    if (opcion === preguntas[indice].correct_answer) {
+      setPuntaje((prev) => prev + 10);
+    }
+  };
+
+  const handleSiguiente = () => {
+    const esUltima = indice === preguntas.length - 1;
+    if (esUltima) {
+      setPantalla("resultado");
+    } else {
+      setIndice((prev) => prev + 1);
+      setSeleccionada(null);
+    }
+  };
+
+  return (
+    <div className="container">
+      <h1>Trivia</h1>
+
+      {pantalla === "inicio" && (
+        <ConfigScreen
+          categoria={categoria}
+          dificultad={dificultad}
+          onCategoriaChange={setCategoria}
+          onDificultadChange={setDificultad}
+          onJugar={handleJugar}
+        />
+      )}
+
+      {pantalla === "quiz" && preguntas.length > 0 && (
+        <GameScreen
+          preguntas={preguntas}
+          indice={indice}
+          puntaje={puntaje}
+          seleccionada={seleccionada}
+          onSeleccionar={handleSeleccionar}
+          onSiguiente={handleSiguiente}
+        />
+      )}
+
+      {pantalla === "resultado" && (
+        <ResultScreen
+          puntaje={puntaje}
+          total={preguntas.length}
+          onReiniciar={handleJugar}
+          onSalir={() => setPantalla("inicio")}
+        />
+      )}
     </div>
   );
 }
 
-export default App; // exportamos para usar en otro aricho, como index.js, muestra el componente app en pantalla
+export default App;
