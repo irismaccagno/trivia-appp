@@ -56,7 +56,7 @@
   color: white;
   background-color: rgb(85, 126, 156);
 }
-.btn { /* estilo base de todos los botones de opción */ }
+ /* estilo base de todos los botones de opción */ 
 .btn-correcta { background-color: green; }
 .btn-incorrecta { background-color: red; }
 

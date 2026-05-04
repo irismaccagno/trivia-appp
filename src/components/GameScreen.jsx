@@ -18,7 +18,8 @@ const opciones = useMemo(
 const getTipo = (opcion) => {
 if (!seleccionada) return "opcion";
 if (opcion === pregunta.correct_answer) return "correcta";
-  return "incorrecta"; // ← todas las demás se vuelven rojas
+if (opcion === seleccionada) return "incorrecta"; // ← todas las demás se vuelven rojas
+return "opcion";
 };
 
 return (
