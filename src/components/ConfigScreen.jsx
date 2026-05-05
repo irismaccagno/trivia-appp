@@ -10,7 +10,7 @@ function ConfigScreen({ categoria, dificultad, onCategoriaChange, onDificultadCh
     fetch("https://opentdb.com/api_category.php")
       .then((res) => res.json())
       .then((data) => setCategorias(data.trivia_categories));
-  }, []); // el [] hace que se ejecute solo una vez al montar el componente
+  }, []);
 
 return (
   <div>

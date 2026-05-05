@@ -13,12 +13,22 @@
   }
 }
 .container {
+  min-height: 100vh;
+  background-image: url('./fondo.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
+  color: black;  
+}
+.container {
   height: 100vh;
   display: flex;
-  justify-content: center;   /* centra vertical */
-  align-items: center;       /* centra horizontal */
+  justify-content: center; 
+  align-items: center;       
   flex-direction: column;
   text-align: center;
+  background-color: #F4A261;
 }
 .App-header {
   background-color: #677897;
@@ -55,8 +65,9 @@
   cursor: pointer;
   color: white;
   background-color: rgb(85, 126, 156);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
- /* estilo base de todos los botones de opción */ 
+
 .btn-correcta { background-color: green; }
 .btn-incorrecta { background-color: red; }
 
@@ -68,24 +79,26 @@ select {
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  background-color: rgb(113, 167, 206);
+  background-color: #E76F51;
   display: block;
   margin: 20px auto;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .btn-jugar {
-  color : rgb(0, 0, 0);
+  color : #ffffff;
   padding: 10px;
   border-radius: 8px;
-  border: none 25px;
+  border: 2px solid #ffffff;
   margin-bottom: 20px;
   cursor: pointer;
-  background-color: #2e649d;
+  background-color: #2A9D8F;
   display: block;
   width: 200%;
   max-width: 400px;
   margin: 20px auto 0 auto;
   font-size: 1.5cm;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 .config-selects {
   background-color: #7989c4;
@@ -100,12 +113,13 @@ select {
   border: none 25px;
   margin-bottom: 15px;
   cursor: pointer;
-  background-color: #3865ec ;
+  background-color: #2A9D8F ;
   display: block;
   width: 150%;
   max-width: 400px;
   margin: 20px auto 0 auto;
   font-size: 0.5cm;
+  border: 2px solid #ffffff;
 }
 .btn-reiniciar {
   color : rgb(0, 0, 0);
@@ -114,12 +128,13 @@ select {
   border: none 25px;
   margin-bottom: 15px;
   cursor: pointer;
-  background-color: #3865ec ;
+  background-color: #2A9D8F ;
   display: block;
   width: 100%;
   max-width: 600px;
   margin: 10px auto;
   font-size: 0.5cm;
+  border: 2px solid #ffffff;
 }
 .btn-salir {
   color : rgb(0, 0, 0);
@@ -128,10 +143,17 @@ select {
   border: none 25px;
   margin-bottom: 15px;
   cursor: pointer;
-  background-color: #3865ec ;
+  background-color: #2A9D8F ;
   display: block;
   width: 100%;
   max-width: 600px;
   margin: 10px auto;
   font-size: 0.5cm;
+  border: 2px solid #ffffff;
+}
+@media (max-width: 600px) {
+  select { width: 100%; }
+  .btn, .btn-jugar, .btn-siguiente, .btn-reiniciar, .btn-salir {
+    max-width: 100%;
+  }
 }

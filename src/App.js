@@ -43,6 +43,7 @@ function App() {
 
   return (
     <div className="container">
+              
       <h1>Trivia</h1>
 
       {pantalla === "inicio" && (
