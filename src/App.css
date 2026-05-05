@@ -14,7 +14,7 @@
 }
 .container {
   min-height: 100vh;
-  background-image: url('./fondo.jpeg');
+  background-image: url('./fondo.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -101,7 +101,7 @@ select {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 .config-selects {
-  background-color: #7989c4;
+  background-color: #2A9D8F;
   border-radius: 12px;
   padding: 30px;
   margin-bottom: 20px;
@@ -150,6 +150,17 @@ select {
   margin: 10px auto;
   font-size: 0.5cm;
   border: 2px solid #ffffff;
+}
+.stats-container {
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 20px;
+  margin: 10px auto;
+  display: inline-block;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 2px solid #2A9D8F;
 }
 @media (max-width: 600px) {
   select { width: 100%; }
