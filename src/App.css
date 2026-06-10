@@ -1,3 +1,10 @@
+:root {
+  --color-primary: #2A9D8F;
+  --color-accent: #E76F51;
+  --shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  --border-white: 2px solid #ffffff;
+}
+
 .App {
   text-align: center;
 }
@@ -12,24 +19,23 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
+/* .container unificado */
 .container {
-  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
   background-image: url('./fondo.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: white;
-  color: black;  
-}
-.container {
-  height: 100vh;
-  display: flex;
-  justify-content: center; 
-  align-items: center;       
-  flex-direction: column;
-  text-align: center;
   background-color: #F4A261;
+  color: black;
 }
+
 .App-header {
   background-color: #677897;
   min-height: 100vh;
@@ -46,13 +52,10 @@
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
+
 .btn {
   display: block;
   width: 100%;
@@ -65,10 +68,10 @@
   cursor: pointer;
   color: white;
   background-color: rgb(85, 126, 156);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow);
 }
 
-.btn-correcta { background-color: green; }
+.btn-correcta  { background-color: green; }
 .btn-incorrecta { background-color: red; }
 
 select {
@@ -79,78 +82,64 @@ select {
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  background-color: #E76F51;
+  background-color: var(--color-accent);
   display: block;
   margin: 20px auto;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow);
 }
 
 .btn-jugar {
-  color : #ffffff;
+  color: #ffffff;
   padding: 10px;
   border-radius: 8px;
-  border: 2px solid #ffffff;
-  margin-bottom: 20px;
+  border: var(--border-white);
   cursor: pointer;
-  background-color: #2A9D8F;
+  background-color: var(--color-primary);
   display: block;
   width: 200%;
   max-width: 400px;
   margin: 20px auto 0 auto;
   font-size: 1.5cm;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow);
 }
+
 .config-selects {
-  background-color: #2A9D8F;
+  background-color: var(--color-primary);
   border-radius: 12px;
   padding: 30px;
   margin-bottom: 20px;
 }
+
 .btn-siguiente {
-  color : rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
   padding: 8px;
   border-radius: 8px;
-  border: none 25px;
-  margin-bottom: 15px;
+  border: var(--border-white);
   cursor: pointer;
-  background-color: #2A9D8F ;
+  background-color: var(--color-primary);
   display: block;
   width: 150%;
   max-width: 400px;
   margin: 20px auto 0 auto;
   font-size: 0.5cm;
-  border: 2px solid #ffffff;
 }
-.btn-reiniciar {
-  color : rgb(0, 0, 0);
-  padding: 20px 10px;
-  border-radius: 10px;
-  border: none 25px;
-  margin-bottom: 15px;
-  cursor: pointer;
-  background-color: #2A9D8F ;
-  display: block;
-  width: 100%;
-  max-width: 600px;
-  margin: 10px auto;
-  font-size: 0.5cm;
-  border: 2px solid #ffffff;
-}
+
+/* btn-reiniciar y btn-salir unificados */
+.btn-reiniciar,
 .btn-salir {
-  color : rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
   padding: 20px 10px;
   border-radius: 10px;
-  border: none 25px;
-  margin-bottom: 15px;
+  border: var(--border-white);
   cursor: pointer;
-  background-color: #2A9D8F ;
+  background-color: var(--color-primary);
   display: block;
   width: 100%;
   max-width: 600px;
   margin: 10px auto;
   font-size: 0.5cm;
-  border: 2px solid #ffffff;
 }
+
 .stats-container {
   background-color: rgba(255, 255, 255, 0.85);
   color: #333;
@@ -160,8 +149,9 @@ select {
   display: inline-block;
   font-weight: bold;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border: 2px solid #2A9D8F;
+  border: 2px solid var(--color-primary);
 }
+
 @media (max-width: 600px) {
   select { width: 100%; }
   .btn, .btn-jugar, .btn-siguiente, .btn-reiniciar, .btn-salir {

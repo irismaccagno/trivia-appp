@@ -7,7 +7,7 @@ function ConfigScreen({ categoria, dificultad, onCategoriaChange, onDificultadCh
   const [categorias, setCategorias] = useState([]);
 
   useEffect(() => {
-    fetch("https://opentdb.com/api_category.php")
+    fetch(fetch(`${process.env.REACT_APP_API_URL}/api_category.php`))
       .then((res) => res.json())
       .then((data) => setCategorias(data.trivia_categories));
   }, []);
