@@ -5,7 +5,7 @@ import GameScreen from "./components/GameScreen";
 import ResultScreen from "./components/ResultScreen";
 import "./App.css";
 
-function App() {
+function App() { // Componente principal de la aplicación que maneja la lógica del juego y el estado global
   const [pantalla, setPantalla]       = useState("inicio");
   const [categoria, setCategoria]     = useState("9");
   const [dificultad, setDificultad]   = useState("easy");
@@ -14,8 +14,8 @@ function App() {
   const [puntaje, setPuntaje]         = useState(0);
   const [seleccionada, setSeleccionada] = useState(null);
 
-  const handleJugar = async () => {
-    const data = await fetchPreguntas(categoria, dificultad);
+  const handleJugar = async () => { // Función para iniciar el juego, obtiene las preguntas de la API y resetea el estado del juego 
+    const data = await fetchPreguntas(categoria, dificultad); // Llamada a la función para obtener las preguntas de la API según la categoría y dificultad seleccionadas
     setPreguntas(data);
     setIndice(0);
     setPuntaje(0);
@@ -23,7 +23,7 @@ function App() {
     setPantalla("quiz");
   };
 
-  const handleSeleccionar = (opcion) => {
+  const handleSeleccionar = (opcion) => { // ffunción para manejar la selección de una opción por parte del usuario, actualiza el puntaje si la opción es correcta
     if (seleccionada) return; // ya respondió
     setSeleccionada(opcion);
     if (opcion === preguntas[indice].correct_answer) {
@@ -31,7 +31,7 @@ function App() {
     }
   };
 
-  const handleSiguiente = () => {
+  const handleSiguiente = () => { // función para avanzar a la siguiente pregunta o mostrar el resultado final si es la última pregunta
     const esUltima = indice === preguntas.length - 1;
     if (esUltima) {
       setPantalla("resultado");
